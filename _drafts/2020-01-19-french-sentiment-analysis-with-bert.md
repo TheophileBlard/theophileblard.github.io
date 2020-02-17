@@ -1,15 +1,20 @@
 ---
 title: "Training BERT on a large-scale French sentiment analysis dataset"
 
+header:
+  overlay_image: images/posts/french-sentiment-analysis-with-bert/camemBERT.png
+  overlay_filter: 0.5
+
 mathjax: True
 
 toc: true
 toc_label: "Table of Contents"
 toc_icon: "cog"
 
-classes: wide
-excerpt: "This blog post showcases how I built a large-scale dataset for French sentiment analysis, and what were my results by training BERT on it."
+excerpt: "The goal of this project was to train a BERT-based model on a large-scale dataset in French language. For this purpose, we're going to build our own sentiment analysis dataset, and train several models on it."
 ---
+
+
 
 NLP is difficult (the most impacful ?)
 BERT => one step towards solving NLP.
@@ -29,13 +34,34 @@ Annotating text excerpts (eg: tweets) by myself was out of the question, as it w
 I also decided not to use online crowdsourcing platforms like [Amazon Mechanical Turk](https://www.mturk.com/), because I couldn't afford to pay people for a personal project.
 
 My approach is inspired by the [Large Movie Review Dataset](https://ai.stanford.edu/~amaas/data/sentiment/), better known as the IMDb dataset.
-This is a dataset for binary sentiment classification containing 50k highly polar movie reviews, collected from [imdb.com](https://www.imdb.com/).
+This is a dataset for **binary sentiment classification** containing 50k highly polar movie reviews, collected from [imdb.com](https://www.imdb.com/).
 Using the rating associated with each user review, the authors automatically annotated reviews with their sentiment (a negative review has a score $$ \leq 4 $$ out of $$10$$, and a positive review has a score $$ \geq 7 $$ out of $$ 10 $$).
 
-<p align="center">
-    <img src="/assets/french_sentiment_analysis/allocine/rating_counts.png" width="700" >
-    <figcaption>Caption describing these two images.</figcaption>
-</p>
+[Allociné](http://www.allocine.fr) is basically a French IMDb.
+It contains user and critic reviews over dozens of thousands of films and TV shows, more than enough for our purpose !
+In order to build our dataset, we're going to extract reviews from Allociné web pages.
+
+![image-center]({{ base_path }}/images/posts/french-sentiment-analysis-with-bert/allocine_logo.png){: .align-center}
+Allociné Logo
+{: style="text-align: center;"}
+{: .small}
+
+### Web scraping
+
+Automatically extracting content from websites is called **web scraping**.
+Web scraping programs look for specific HTML tags or CSS selectors in the code source, in order to retrieve data, in a targeted way.
+By taking advantage of the structured nature of web pages, these programs can iterate over the whole website and recover a large amount of data without any human labor.
+
+For this project, I decided to
+
+
+![image-center]({{ base_path }}/assets/french_sentiment_analysis/allocine/rating_counts.png){: .align-center}
+Original vs. calibrated images
+{: style="text-align: center;"}
+{: .small}
+
+### Exploring data
+
 
 ## Training BERT
 
